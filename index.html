@@ -1,106 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>“2 + 2 = 5”</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intho | Portfolio</title>
   <style>
     body {
-      background-color: #3b1e00;
-      color: #f0d090;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #222;
+      color: #fff;
       padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    section#gallery {
+      padding: 60px 20px;
+      background-color: #fff;
+    }
+
+    .gallery-grid {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      height: 100vh;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    .text-area, .credits-area {
-      width: 45%;
-    }
-
-    .typewriter-text {
+    .gallery-item {
+      width: 300px;
+      background: #fafafa;
+      border-radius: 8px;
       overflow: hidden;
-      white-space: nowrap;
-      border-right: .15em solid #f0d090;
-      animation: typing 5s steps(40, end), blink-caret .75s step-end infinite;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+    .gallery-item:hover {
+      transform: translateY(-5px);
     }
 
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #f0d090; }
+    .gallery-item img {
+      width: 100%;
+      display: block;
     }
 
-    .credits {
-      font-size: 16px;
-      line-height: 1.6;
+    .gallery-item p {
+      margin: 10px;
+      font-weight: bold;
     }
 
-    .credits .highlight {
-      color: #f8f8f2;
-    }
-
-    .logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 80px;
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 60px;
     }
   </style>
 </head>
 <body>
-  <div class="text-area">
-    <div class="typewriter-text">
-      Hi, I'm Viranga<br>
-      On your right, is more of me.<br>
-      Part time creative. Part time techie.<br>
-      
-    </div>
-  </div>
-  <div class="credits-area">
-    <div class="credits">
-      Art  - <a href="#gallery" class="nav-link">View Gallery</a>
-<br>
-      Stephen Merchant - <span class="highlight">Wheatley</span><br>
-      J.K. Simmons - <span class="highlight">Cave Johnson</span><br>
-      Joe Michaels - <span class="highlight">Announcer</span><br>
-      Nolan North - <span class="highlight">Cores, Defective Turrets</span><br>
-      Dee Bradley Baker - <span class="highlight">Atlas, P-Body</span><br><br>
-      &gt;THANKS FOR THE USE<br>
-      &gt;OF THEIR FACE:<br>
-      Alesia Glidewell - <span class="highlight">Chell</span>
-    </div>
-  </div>
-  <section id="gallery">
-  <h2 style="text-align:center;">My Gallery</h2>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <a href="https://inthogen.github.io/Intho/images/Anon angel.png" target="_blank">
-        <img src="https://via.placeholder.com/300x200" alt="Project 1">
-      </a>
-      <p>Project Title 1</p>
-    </div>
-    <div class="gallery-item">
-      <a href="https://yourproject2.com" target="_blank">
-        <img src="https://via.placeholder.com/300x200" alt="Project 2">
-      </a>
-      <p>Project Title 2</p>
-    </div>
-    <div class="gallery-item">
-      <a href="https://github.com/yourusername/project3" target="_blank">
-        <img src="https://via.placeholder.com/300x200" alt="Project 3">
-      </a>
-      <p>GitHub Project</p>
-    </div>
-  </div>
-</section>
 
-</body>
-</html>
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Exploring creativity through code, design, and caffeine.</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>This is a space where I showcase projects, experiments, and passions. I enjoy building, designing, and solving problems with style and intention.</p>
+    </section>
+  </main>
+
+  <!-- 👇 GALLERY SECTION STARTS HERE 👇 -->
+  <section id="gallery">
+    <h2>My Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <a href="https://yourproject1.com" target="_blank">
+          <img src="images/project1.jpg" alt="Project 1">
+        </a>
+        <p>Project Title 1</p>
+      </div>
+      <div class="gallery-item">
+        <a href="https://yourproject2.com" target="_blank">
+          <img src="images/project
