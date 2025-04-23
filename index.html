@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Intho | Bento Portfolio</title>
   <style>
+    /* --- Basic Styling (Same as before) --- */
     body {
       margin: 0;
       font-family: "Segoe UI", sans-serif;
@@ -17,17 +18,6 @@
       color: #fff;
       padding: 60px 20px;
       text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 1.2em;
-      color: #ccc;
     }
 
     .bento-grid {
@@ -57,7 +47,7 @@
     .bento-box img {
       max-width: 100%;
       border-radius: 8px;
-      margin-bottom: 15px;
+      cursor: pointer;
     }
 
     .bento-box h2 {
@@ -68,20 +58,43 @@
       flex-grow: 1;
     }
 
-    .bento-box a {
-      display: inline-block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #0077ff;
-      font-weight: bold;
-    }
-
     footer {
       text-align: center;
       padding: 30px 10px;
       background: #111;
       color: #aaa;
       margin-top: 40px;
+    }
+
+    /* --- Lightbox Styling --- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 2rem;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -99,16 +112,24 @@
       <a href="#about">Learn More</a>
     </div>
 
+    <!-- 🎨 Lightbox Gallery Tile -->
     <div class="bento-box">
-      <h2>Gallery</h2>
-      <img src="images/Anon angel.png" alt="Gallery preview" />
-      <p>Peek into my creative space — a mix of design, development, and experiments.</p>
-      <a href="#gallery">View Projects</a>
+      <h2>Gallery Preview</h2>
+      <a href="#lightbox1">
+        <img src="images/project-preview.jpg" alt="Click to view larger">
+      </a>
+      <p>Click to view a featured piece in fullscreen. More coming soon!</p>
+    </div>
+
+    <!-- Lightbox Modal (linked by anchor) -->
+    <div id="lightbox1" class="lightbox">
+      <a href="#" class="lightbox-close">&times;</a>
+      <img src="images/project-preview.jpg" alt="Full size project">
     </div>
 
     <div class="bento-box">
       <h2>Featured Project</h2>
-      <img src="images/featured.jpg" alt="Featured project" />
+      <img src="images/featured.jpg" alt="Featured project">
       <p>This project pushed my skills and creativity further than ever — I’ll let the pixels do the talking.</p>
       <a href="https://yourprojectlink.com" target="_blank">See It Live</a>
     </div>
