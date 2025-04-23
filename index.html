@@ -1,122 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Intho | Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intho | Bento Portfolio</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: "Segoe UI", sans-serif;
       background: #f4f4f4;
+      color: #222;
     }
 
     header {
-      background-color: #222;
+      background-color: #111;
       color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    nav {
-      background-color: #333;
-      padding: 10px;
-      text-align: center;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    section#gallery {
       padding: 60px 20px;
-      background-color: #fff;
+      text-align: center;
     }
 
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      justify-content: center;
-      max-width: 1000px;
+      padding: 40px 20px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    .gallery-item {
-      width: 300px;
-      background: #fafafa;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    .bento-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: transform 0.3s ease;
     }
 
-    .gallery-item:hover {
+    .bento-box:hover {
       transform: translateY(-5px);
     }
 
-    .gallery-item img {
-      width: 100%;
-      display: block;
+    .bento-box img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
     }
 
-    .gallery-item p {
-      margin: 10px;
+    .bento-box h2 {
+      margin-top: 0;
+    }
+
+    .bento-box p {
+      flex-grow: 1;
+    }
+
+    .bento-box a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #0077ff;
       font-weight: bold;
     }
 
     footer {
-      background-color: #222;
-      color: #fff;
-      padding: 20px;
       text-align: center;
-      margin-top: 60px;
+      padding: 30px 10px;
+      background: #111;
+      color: #aaa;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Exploring creativity through code, design, and caffeine.</p>
+    <h1>Intho Portfolio</h1>
+    <p>Design. Code. Create. Repeat.</p>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <main>
-    <section id="about">
+  <div class="bento-grid">
+    <div class="bento-box">
       <h2>About Me</h2>
-      <p>This is a space where I showcase projects, experiments, and passions. I enjoy building, designing, and solving problems with style and intention.</p>
-    </section>
-  </main>
+      <p>Hi! I'm Intho — a curious creator who enjoys turning ideas into digital experiences. I work with code, design, and the occasional late-night debugging binge.</p>
+      <a href="#about">Learn More</a>
+    </div>
 
-  <!-- 👇 GALLERY SECTION STARTS HERE 👇 -->
-  <section id="gallery">
-    <h2>My Gallery</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <a href="https://yourproject1.com" target="_blank">
-          <img src="images/project1.jpg" alt="Project 1">
-        </a>
-        <p>Project Title 1</p>
-      </div>
-      <div class="gallery-item">
-        <a href="https://yourproject2.com" target="_blank">
-          <img src="images/project
+    <div class="bento-box">
+      <h2>Gallery</h2>
+      <img src="images/project-preview.jpg" alt="Gallery preview" />
+      <p>Peek into my creative space — a mix of design, development, and experiments.</p>
+      <a href="#gallery">View Projects</a>
+    </div>
+
+    <div class="bento-box">
+      <h2>Featured Project</h2>
+      <img src="images/featured.jpg" alt="Featured project" />
+      <p>This project pushed my skills and creativity further than ever — I’ll let the pixels do the talking.</p>
+      <a href="https://yourprojectlink.com" target="_blank">See It Live</a>
+    </div>
+
+    <div class="bento-box">
+      <h2>Contact</h2>
+      <p>Let’s connect! Whether it’s a project idea, collaboration, or just to say hey.</p>
+      <a href="mailto:youremail@example.com">Get in Touch</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Intho. All rights reserved.
+  </footer>
+
+</body>
+</html>
