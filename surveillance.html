@@ -1,0 +1,119 @@
+<!-- Save this as surveillance.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surveillance Feed – IN-TH0 Archives</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff0000;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px red;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feed-box {
+      position: relative;
+      border: 2px solid #ff0000;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+      transition: 0.3s ease;
+    }
+
+    .feed-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+    }
+
+    .feed-box img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.2);
+      transition: filter 0.3s ease;
+    }
+
+    .feed-box:hover img {
+      filter: grayscale(0%) contrast(1.5) brightness(1.2);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(13, 13, 13, 0.85);
+      color: #ff4444;
+      font-size: 0.9em;
+      padding: 8px 10px;
+      border-top: 1px solid #ff0000;
+      text-align: left;
+    }
+
+    a {
+      color: #ff4444;
+      text-decoration: none;
+    }
+
+    .scanlines::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 0, 0, 0.03),
+        rgba(255, 0, 0, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      z-index: 1;
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Surveillance Archive – CAM Feed Access</h1>
+
+  <div class="grid">
+    <div class="feed-box scanlines">
+      <img src="images/gallery1.jpg" alt="Cam Footage 1">
+      <div class="caption">CAM 01 – Inner Corridor</div>
+    </div>
+    <div class="feed-box scanlines">
+      <img src="images/gallery2.jpg" alt="Cam Footage 2">
+      <div class="caption">CAM 04 – Eastern Watchpost</div>
+    </div>
+    <div class="feed-box scanlines">
+      <img src="images/gallery3.jpg" alt="Cam Footage 3">
+      <div class="caption">CAM 07 – Thought Lounge</div>
+    </div>
+    <div class="feed-box scanlines">
+      <img src="images/gallery4.jpg" alt="Cam Footage 4">
+      <div class="caption">CAM 09 – Memory Hole</div>
+    </div>
+    <!-- Add more entries here -->
+  </div>
+
+</body>
+</html>
