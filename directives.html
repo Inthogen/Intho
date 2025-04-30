@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INGSOC Directives</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: #0d0d0d;
+      color: #e0e0e0;
+      letter-spacing: 0.05em;
+    }
+
+    header {
+      background: #111;
+      color: #ff0000;
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 2px solid #ff0000;
+      text-shadow: 0 0 10px red;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 0.12em;
+      animation: flicker 3s infinite;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .directive {
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid #ff0000;
+      border-left: 5px solid #ff0000;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .directive:hover {
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+    }
+
+    .directive h2 {
+      margin: 0 0 10px;
+      color: #ff0000;
+      font-size: 1.3em;
+      text-transform: uppercase;
+    }
+
+    .directive p {
+      margin: 6px 0;
+      font-size: 0.95em;
+      color: #ccc;
+    }
+
+    .directive a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #ff4444;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      background: #111;
+      color: #666;
+      font-size: 0.8em;
+      border-top: 1px solid #ff0000;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: 0.3; }
+    }
+
+    body::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 0, 0, 0.02),
+        rgba(255, 0, 0, 0.02) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      z-index: 9999;
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Directives Log</h1>
+    <p>Dispatched under Authority of INGSOC • Protocol 101</p>
+  </header>
+
+  <div class="container">
+    <div class="directive">
+      <h2>Directive 0041-A: [REDACTED]</h2>
+      <p><strong>Issued:</strong> 04.06.2025</p>
+      <p><strong>Clearance Level:</strong> RED-3</p>
+      <p><strong>Status:</strong> <span style="color:lime;">ACTIVE</span></p>
+      <p>Experimental documentation and render package approved for field study. Details obfuscated for operator safety.</p>
+      <a href="https://yourprojectlink.com" target="_blank">DEPLOY INTEL</a>
+    </div>
+
+    <div class="directive">
+      <h2>Directive 0037-B: Signal Echo</h2>
+      <p><strong>Issued:</strong> 01.27.2025</p>
+      <p><strong>Clearance Level:</strong> ORANGE-2</p>
+      <p><strong>Status:</strong> <span style="color:yellow;">PENDING REVIEW</span></p>
+      <p>Low-frequency data transmission test involving layered visual packets. Awaiting internal decrypt & publishing directive.</p>
+      <a href="#">ACCESS DECRYPT FILE</a>
+    </div>
+
+    <div class="directive">
+      <h2>Directive 0020-X: Mural Sweep</h2>
+      <p><strong>Issued:</strong> 11.15.2024</p>
+      <p><strong>Clearance Level:</strong> GREEN-1</p>
+      <p><strong>Status:</strong> <span style="color:gray;">ARCHIVED</span></p>
+      <p>Public display initiative. Murals completed under covert license, filed for visual outreach operations.</p>
+      <a href="#">VIEW SURVEILLANCE</a>
+    </div>
+  </div>
+
+  <footer>
+    Ministry of Truth Surveillance Portal © 1984–2025. No unauthorized access permitted.
+  </footer>
+
+</body>
+</html>
