@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transmit Signal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background: #0d0d0d;
+      color: #e0e0e0;
+      letter-spacing: 0.05em;
+    }
+
+    header {
+      background: #111;
+      color: #ff0000;
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 2px solid #ff0000;
+      text-shadow: 0 0 10px red;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.3em;
+      letter-spacing: 0.1em;
+      animation: flicker 3s infinite;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid #ff0000;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+
+    form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #ff4444;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      background: #111;
+      border: 1px solid #ff0000;
+      color: #e0e0e0;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.9em;
+    }
+
+    input[type="submit"] {
+      background: #ff0000;
+      color: #000;
+      cursor: pointer;
+      margin-top: 30px;
+      font-weight: bold;
+      border: none;
+    }
+
+    input[type="submit"]:hover {
+      background: #cc0000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      background: #111;
+      color: #666;
+      font-size: 0.8em;
+      border-top: 1px solid #ff0000;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: 0.3; }
+    }
+
+    body::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 0, 0, 0.02),
+        rgba(255, 0, 0, 0.02) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      z-index: 9999;
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Transmit Signal</h1>
+    <p>Secure Line to Ministry of Truth – Trace Uncertain</p>
+  </header>
+
+  <div class="container">
+    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+      <label for="agent">Agent Handle:</label>
+      <input type="text" id="agent" name="Agent" placeholder="e.g. Echo-47" required />
+
+      <label for="transmission">Transmission Code:</label>
+      <input type="text" id="transmission" name="Code" placeholder="Optional keyword or project ID" />
+
+      <label for="message">Encrypted Message:</label>
+      <textarea id="message" name="Message" rows="6" placeholder="Your message or confession here..." required></textarea>
+
+      <input type="submit" value="TRANSMIT" />
+    </form>
+  </div>
+
+  <footer>
+    All transmissions monitored. Misuse results in vaporization. © 1984–2025 INGSOC.
+  </footer>
+
+</body>
+</html>
