@@ -3,323 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viranga • Inthogen Visions</title>
-    <style>
-        :root {
-            --primary: #ff00ff;
-            --secondary: #00ffff;
-            --accent: #ffff00;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Courier New', monospace;
-            background: #0a001f;
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        
-        /* Psychedelic background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.08) 0%, rgba(0, 255, 255, 0.08) 100%);
-            z-index: -1;
-            animation: pulse 15s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            100% { opacity: 1; }
-        }
-        
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 0, 31, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 2.2rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        nav a:hover {
-            color: var(--accent);
-            text-shadow: 0 0 10px var(--accent);
-        }
-        
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            z-index: 2;
-            max-width: 900px;
-            padding: 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 5.5rem;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% 200%;
-            animation: gradientShift 8s linear infinite;
-            text-shadow: 0 0 40px rgba(255, 0, 255, 0.8);
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            color: #ddd;
-        }
-        
-        .cta {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: transparent;
-            border: 3px solid var(--primary);
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.4s ease;
-            border-radius: 0;
-        }
-        
-        .cta:hover {
-            background: var(--primary);
-            color: black;
-            box-shadow: 0 0 30px var(--primary);
-            transform: scale(1.05);
-        }
-        
-        .gallery-section {
-            padding: 120px 5% 80px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            text-shadow: 0 0 15px var(--accent);
-        }
-        
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-        
-        .filter-btn {
-            padding: 0.8rem 1.8rem;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(255,0,255,0.4);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--primary);
-            color: black;
-            border-color: var(--primary);
-            box-shadow: 0 0 20px var(--primary);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            aspect-ratio: 1 / 1;
-            cursor: pointer;
-            transition: transform 0.4s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.04);
-            box-shadow: 0 0 40px rgba(255, 0, 255, 0.6);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.15);
-        }
-        
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(10,0,31,0.95));
-            padding: 1.5rem 1rem 1rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover .overlay {
-            opacity: 1;
-        }
-        
-        .overlay h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .overlay p {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-        
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 0, 31, 0.98);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-        }
-        
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90vh;
-            position: relative;
-        }
-        
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            box-shadow: 0 0 60px rgba(255, 0, 255, 0.7);
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: -50px;
-            right: 20px;
-            font-size: 3rem;
-            color: white;
-            cursor: pointer;
-            text-shadow: 0 0 10px black;
-        }
-        
-        footer {
-            padding: 4rem 5%;
-            background: #050014;
-            text-align: center;
-            border-top: 1px solid var(--primary);
-        }
-        
-        .social-links {
-            margin: 2rem 0;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 2rem;
-            margin: 0 1rem;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary);
-            transform: translateY(-5px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-        }
-    </style>
+    <title>NEON ECHO • Psychedelic Visions</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -343,10 +28,6 @@
             <p>Psychedelic Realms • Digital Dreams • Street Prophecy</p>
             <a href="#gallery" class="cta">EXPLORE THE VISION</a>
         </div>
-        
-        <!-- Subtle floating elements -->
-        <div style="position: absolute; bottom: 10%; left: 10%; font-size: 4rem; opacity: 0.1; transform: rotate(-12deg);">🌈</div>
-        <div style="position: absolute; top: 25%; right: 15%; font-size: 5rem; opacity: 0.1; transform: rotate(25deg);">✦</div>
     </section>
 
     <!-- GALLERY -->
@@ -363,23 +44,21 @@
             <button class="filter-btn" data-filter="collab">COLLABS</button>
         </div>
         
-        <div class="gallery-grid" id="gallery-grid">
-            <!-- Images populated by JS -->
-        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="gallery-section" style="background: #0f0028; padding-top: 80px;">
+    <section id="about" class="gallery-section">
         <div class="section-header">
             <h2>THE VISIONARY</h2>
         </div>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.3rem; padding: 0 1rem;">
+        <div class="about-content">
             <p>Blending the chaotic beauty of street art with the infinite possibilities of digital creation. My work fuses vibrant color palettes, surreal geometry, and consciousness-expanding motifs to create portals into other dimensions.</p>
-            <p style="margin-top: 2rem;">Available for commissions, murals, and collaborations.</p>
+            <p>Available for commissions, murals, and collaborations.</p>
         </div>
     </section>
 
-    <!-- FOOTER / CONTACT -->
+    <!-- FOOTER -->
     <footer id="contact">
         <p style="font-size: 2rem; margin-bottom: 1rem;">Let's create something cosmic</p>
         <p>hello@neonecho.art</p>
@@ -390,107 +69,46 @@
             <a href="#" target="_blank">TikTok</a>
         </div>
         
-        <p style="margin-top: 3rem; opacity: 0.5; font-size: 0.9rem;">© 2026 NEON ECHO • Built for the Glow</p>
+        <p style="margin-top: 3rem; opacity: 0.5; font-size: 0.9rem;">© 2026 NEON ECHO</p>
     </footer>
 
     <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
-            <span class="close-btn" id="close-lightbox">&times;</span>
+            <span class="close-btn" id="close-lightbox">×</span>
             <img id="lightbox-image" src="" alt="">
         </div>
     </div>
 
     <script>
-        // Sample artwork data
+        // === UPDATE THIS ARRAY WITH YOUR ACTUAL IMAGE FILENAMES ===
         const artworks = [
             {
                 id: 1,
-                title: "Buddha Animated",
+                title: "Fractal Dreamscape",
                 category: "digital",
-                img: "https://github.com/Inthogen/Intho/blob/8046568e4aa5aac1b5fc6086a9dabdae2f5550b1/images/gallery1.jpg",
-                desc: "Digital"
+                filename: "https://github.com/Inthogen/Intho/blob/1f3dac3d2116c4b37ab5e31162c7195722622757/images/gallery1.jpg",           // ← Change to your real filename
+                desc: "Digital • 2025"
             },
             {
                 id: 2,
                 title: "Electric Jungle",
                 category: "digital",
-                img: "https://picsum.photos/id/133/800/800",
+                filename: "digital-2.jpg",
                 desc: "Digital • 2025"
             },
             {
                 id: 3,
-                title: "Cosmic Portal",
-                category: "digital",
-                img: "https://picsum.photos/id/201/800/800",
-                desc: "Digital • 2024"
-            },
-            {
-                id: 4,
-                title: "Neon Oracle",
-                category: "mural",
-                img: "https://picsum.photos/id/251/800/800",
-                desc: "Mural • Berlin 2025"
-            },
-            {
-                id: 5,
                 title: "Psyche Wall",
                 category: "mural",
-                img: "https://picsum.photos/id/312/800/800",
-                desc: "Mural • Lisbon 2024"
+                filename: "mural-1.jpg",
+                desc: "Mural • Lisbon 2025"
             },
-            {
-                id: 6,
-                title: "Street Mandala",
-                category: "mural",
-                img: "https://picsum.photos/id/366/800/800",
-                desc: "Mural • 2025"
-            },
-            {
-                id: 7,
-                title: "Echo Chamber Collab",
-                category: "collab",
-                img: "https://picsum.photos/id/401/800/800",
-                desc: "Collab with VAPOR • 2025"
-            },
-            {
-                id: 8,
-                title: "Chromatic Ritual",
-                category: "collab",
-                img: "https://picsum.photos/id/433/800/800",
-                desc: "Collab • 2024"
-            },
-            {
-                id: 9,
-                title: "Infinite Loop",
-                category: "digital",
-                img: "https://picsum.photos/id/1016/800/800",
-                desc: "Digital • 2025"
-            },
-            {
-                id: 10,
-                title: "Urban Shaman",
-                category: "mural",
-                img: "https://picsum.photos/id/669/800/800",
-                desc: "Mural • NYC 2025"
-            },
-            {
-                id: 11,
-                title: "Melting Realities",
-                category: "digital",
-                img: "https://picsum.photos/id/870/800/800",
-                desc: "Digital • 2025"
-            },
-            {
-                id: 12,
-                title: "Third Eye Collective",
-                category: "collab",
-                img: "https://picsum.photos/id/1018/800/800",
-                desc: "Collab • 2025"
-            }
+            // Add more entries here...
+            // Example:
+            // { id: 4, title: "Title", category: "collab", filename: "collab-1.jpg", desc: "Collab • 2025" }
         ];
 
-        // Render gallery
         function renderGallery(filter = 'all') {
             const grid = document.getElementById('gallery-grid');
             grid.innerHTML = '';
@@ -501,11 +119,10 @@
             
             filtered.forEach(art => {
                 const item = document.createElement('div');
-                item.className = `gallery-item`;
-                item.dataset.category = art.category;
+                item.className = 'gallery-item';
                 
                 item.innerHTML = `
-                    <img src="${art.img}" alt="${art.title}" loading="lazy">
+                    <img src="images/${art.filename}" alt="${art.title}" loading="lazy">
                     <div class="overlay">
                         <h3>${art.title}</h3>
                         <p>${art.desc}</p>
@@ -513,16 +130,13 @@
                 `;
                 
                 item.addEventListener('click', () => {
-                    showLightbox(art.img, art.title);
+                    showLightbox(`images/${art.filename}`, art.title);
                 });
                 
                 grid.appendChild(item);
             });
         }
 
-        // Lightbox functionality
-        let currentLightboxSrc = '';
-        
         function showLightbox(src, title) {
             const lightbox = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-image');
@@ -531,66 +145,33 @@
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-        
+
         function hideLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
+            document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'visible';
         }
 
-        // Filter functionality
-        function setupFilters() {
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active from all
-                    buttons.forEach(b => b.classList.remove('active'));
-                    // Add to this one
-                    btn.classList.add('active');
-                    
-                    const filter = btn.getAttribute('data-filter');
-                    renderGallery(filter);
-                });
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderGallery(btn.dataset.filter);
             });
-        }
-
-        // Close lightbox
-        document.getElementById('close-lightbox').addEventListener('click', hideLightbox);
-        
-        // Close on background click
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target.id === 'lightbox') {
-                hideLightbox();
-            }
         });
 
-        // Keyboard escape
+        // Lightbox controls
+        document.getElementById('close-lightbox').addEventListener('click', hideLightbox);
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') hideLightbox();
+        });
         document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape") {
-                hideLightbox();
-            }
+            if (e.key === "Escape") hideLightbox();
         });
 
         // Initialize
-        window.onload = function() {
+        window.onload = () => {
             renderGallery('all');
-            setupFilters();
-            
-            // Smooth scroll for nav links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if (this.getAttribute('href') !== '#') {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
         };
     </script>
 </body>
