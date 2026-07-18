@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viranga Wettewa — Begin Conversation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-font { font-family: 'Playfair Display', serif; }
+        .option-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#f8f4f0] text-[#1c1917] min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#f8f4f0]/95 backdrop-blur-md border-b border-[#e5d9c8]">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="index.html" class="heading-font text-2xl tracking-tighter">Viranga Wettewa</a>
+            <a href="index.html" class="text-sm tracking-widest hover:text-[#b38b5d]">← HOME</a>
+        </div>
+    </nav>
+
+    <div class="pt-24 max-w-2xl mx-auto px-6 pb-20" id="app">
+        <!-- Step 1: Referral -->
+        <div id="step-1">
+            <div class="text-center mb-12">
+                <h1 class="heading-font text-5xl tracking-tighter mb-4">Hi, wanderer.</h1>
+                <p class="text-xl">Who referred you to me?</p>
+            </div>
+            <input id="referral" type="text" placeholder="A friend, the internet, pure curiosity..." 
+                   class="w-full px-6 py-5 border-b-2 border-[#b38b5d] bg-transparent text-lg focus:outline-none">
+            <button onclick="nextStep(2)" 
+                    class="mt-10 w-full py-6 bg-[#1c1917] text-white text-sm tracking-widest hover:bg-[#b38b5d]">
+                CONTINUE
+            </button>
+        </div>
+
+        <!-- Step 2: Image Choice -->
+        <div id="step-2" class="hidden">
+            <h2 class="heading-font text-4xl text-center mb-10">Which one connects with you the quickest?</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div onclick="selectChoice('spongebob')" class="option-card cursor-pointer bg-white p-4 rounded-xl">
+                    <img src="https://picsum.photos/id/201/400/300" class="w-full h-48 object-cover rounded-lg" alt="Spongebob">
+                    <p class="text-center mt-3 font-medium">Spongebob</p>
+                </div>
+                <div onclick="selectChoice('ivey')" class="option-card cursor-pointer bg-white p-4 rounded-xl">
+                    <img src="https://picsum.photos/id/251/400/300" class="w-full h-48 object-cover rounded-lg" alt="Phil Ivey">
+                    <p class="text-center mt-3 font-medium">Phil Ivey</p>
+                </div>
+                <div onclick="selectChoice('pepe')" class="option-card cursor-pointer bg-white p-4 rounded-xl">
+                    <img src="https://picsum.photos/id/1015/400/300" class="w-full h-48 object-cover rounded-lg" alt="Pepe">
+                    <p class="text-center mt-3 font-medium">Pepe the Frog</p>
+                </div>
+                <div onclick="selectChoice('chastain')" class="option-card cursor-pointer bg-white p-4 rounded-xl">
+                    <img src="https://picsum.photos/id/1016/400/300" class="w-full h-48 object-cover rounded-lg" alt="Jessica Chastain">
+                    <p class="text-center mt-3 font-medium">Molly's Game</p>
+                </div>
+                <div onclick="selectChoice('gigachad')" class="option-card cursor-pointer bg-white p-4 rounded-xl">
+                    <img src="https://picsum.photos/id/180/400/300" class="w-full h-48 object-cover rounded-lg" alt="Gigachad">
+                    <p class="text-center mt-3 font-medium">Gigachad</p>
+                </div>
+                <div onclick="selectChoice('porsche')" class="option-card cursor-pointer bg-white p-4 rounded-xl">
+                    <img src="https://picsum.photos/id/1074/400/300" class="w-full h-48 object-cover rounded-lg" alt="Porsche GT3 RS">
+                    <p class="text-center mt-3 font-medium">Green Porsche GT3 RS</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Result + Contact Form -->
+        <div id="step-3" class="hidden">
+            <div id="result-message" class="text-center mb-12"></div>
+            
+            <div class="max-w-md mx-auto">
+                <h3 class="text-xl mb-6">Let's stay in touch</h3>
+                <input id="name" type="text" placeholder="Your name" class="w-full mb-6 px-6 py-5 border-b border-[#b38b5d] bg-transparent">
+                <input id="email" type="email" placeholder="Email address" class="w-full mb-6 px-6 py-5 border-b border-[#b38b5d] bg-transparent">
+                <input id="phone" type="tel" placeholder="Phone (optional)" class="w-full mb-10 px-6 py-5 border-b border-[#b38b5d] bg-transparent">
+                
+                <button onclick="submitContact()" 
+                        class="w-full py-6 bg-[#b38b5d] text-[#1c1917] text-sm tracking-widest font-medium">
+                    SEND & CONNECT
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentChoice = '';
+
+        function nextStep(step) {
+            document.querySelectorAll('#app > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+        }
+
+        function selectChoice(choice) {
+            currentChoice = choice;
+            const messageDiv = document.getElementById('result-message');
+            
+            let message = '';
+            if (choice === 'spongebob') {
+                message = `<h2 class="heading-font text-4xl mb-6">Ha! Classic choice.</h2><p class="text-xl">Who doesn’t love the lore of the Bikini Atoll (it’s horrific). Enter your contact info below.</p>`;
+            } else if (choice === 'ivey') {
+                message = `<h2 class="heading-font text-4xl mb-6">You got a good read! Sharp.</h2><p class="text-xl">Let’s connect.</p>`;
+            } else if (choice === 'pepe') {
+                message = `<h2 class="heading-font text-4xl mb-6">I'm good, thanks for visiting!</h2>`;
+                // Auto hide form for Pepe
+                setTimeout(() => { window.location.href = 'index.html'; }, 2500);
+                return;
+            } else if (choice === 'chastain') {
+                message = `<h2 class="heading-font text-4xl mb-6">High stakes equal high rewards.</h2><p class="text-xl">Let’s connect.</p>`;
+            } else if (choice === 'gigachad') {
+                message = `<h2 class="heading-font text-4xl mb-6">Do it for the cigar smoking OJ drinking working stiffs who keep this bitch runnin’.</h2>`;
+            } else if (choice === 'porsche') {
+                message = `<h2 class="heading-font text-4xl mb-6">Great minds think alike.</h2><p class="text-xl">Let’s connect.</p>`;
+            }
+            
+            messageDiv.innerHTML = message;
+            nextStep(3);
+        }
+
+        function submitContact() {
+            const name = document.getElementById('name').value;
+            if (!name) {
+                alert("Name is required — let's do this properly.");
+                return;
+            }
+            alert(`Thank you, ${name}. I'll reach out soon.`);
+            window.location.href = 'index.html';
+        }
+
+        // Start on step 1
+        window.onload = () => nextStep(1);
+    </script>
+</body>
+</html>
